@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FriendsList.Domain.Entities
 {
-    public class Friend : GenericEntity
+    public class Friend : Entity
     {
         [Required]
         [Display(Name = "Nome")]

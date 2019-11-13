@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FriendsList.Data\FriendsList.Data.csproj" />
+    <ProjectReference Include="..\FriendsList.Domain\FriendsList.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
