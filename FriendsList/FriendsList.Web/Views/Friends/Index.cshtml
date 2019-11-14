@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Friend>
+
+@{ 
+    ViewBag.Title = "Friends";
+}
+
+<section class="section">
+    <table class="table">
+        <thead>
+            <th>Selecionar</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>E-mail</th>
+        </thead>
+
+        <tbody>
+            @foreach(var friend in Model)
+            {
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>@friend.Name</td>
+                    <td>@friend.FamilyName</td>
+                    <td>@friend.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

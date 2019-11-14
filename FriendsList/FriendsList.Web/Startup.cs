@@ -1,4 +1,7 @@
 using FriendsList.Data.Contexts;
+using FriendsList.Domain.Entities;
+using FriendsList.Domain.Interfaces;
+using FriendsList.Domain.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,9 +24,13 @@ namespace FriendsList.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = _configuration.GetConnectionString("FriendsList");
+
             services.AddMvc(options => options.EnableEndpointRouting = false);
-            services.AddDbContext<FriendsListDbContext>(options => 
-                options.UseSqlServer(_configuration.GetConnectionString("FriendsList")));
+
+            services.AddScoped<IRepository<Friend>, FriendsRepository>();
+
+            services.AddDbContext<FriendsListDbContext>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,8 +39,7 @@ namespace FriendsList.Web
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            app.UseRouting();
-
+            app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }
     }
